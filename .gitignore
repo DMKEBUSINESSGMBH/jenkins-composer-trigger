@@ -1,0 +1,19 @@
+### Intellij ###
+*.iml
+.idea/
+
+### Eclipse ###
+bin/
+.settings/
+.project
+.classpath
+
+*.class
+target/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+work/
