@@ -1,6 +1,7 @@
 package de.dmkebusiness.jenkins.composertrigger;
 
 import hudson.Extension;
+
 import hudson.model.BuildableItem;
 import hudson.model.Item;
 import hudson.model.TaskListener;
@@ -92,8 +93,7 @@ public class ComposerTrigger extends Trigger<BuildableItem> {
 					@Override
 					public void print(TaskListener listener) {
 						listener.getLogger().println();
-						listener.getLogger().println(
-								getShortDescription() + ": one or more dependencies has an update...");
+						listener.getLogger().println("ComposerTrigger: one or more dependencies has an update...");
 						listener.getLogger().println("Output from composer:");
 						listener.getLogger().println("------------------------------");
 						listener.getLogger().println(output.trim());
@@ -148,7 +148,7 @@ public class ComposerTrigger extends Trigger<BuildableItem> {
 
 		@Override
 		public String getDisplayName() {
-			return "mit Composer auf Updates prüfen";
+			return "check for dependency updates with composer";
 		}
 	}
 }
