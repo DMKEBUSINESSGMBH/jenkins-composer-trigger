@@ -73,8 +73,8 @@ public class ComposerTrigger extends Trigger<BuildableItem> {
 		try {
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			node.createLauncher(TaskListener.NULL).launch()
-					.cmds(this.php, this.composerPhar, "update", "--dry-run", "--no-ansi").pwd(workspace.toString())
-					.stdout(baos).join();
+					.cmds(this.php, this.composerPhar, "update", "--dry-run", "-v", "--no-ansi")
+					.pwd(workspace.toString()).stdout(baos).join();
 
 			final String output = baos.toString();
 
@@ -86,8 +86,19 @@ public class ComposerTrigger extends Trigger<BuildableItem> {
 				job.scheduleBuild(0, new Cause() {
 					@Override
 					public String getShortDescription() {
-						return "ComposerTrigger: one or more dependencies has an update...<br><br>Output from composer:<br><br>"
-								+ output.replace("\n", "<br>");
+						return "ComposerTrigger";
+					}
+
+					@Override
+					public void print(TaskListener listener) {
+						listener.getLogger().println();
+						listener.getLogger().println(
+								getShortDescription() + ": one or more dependencies has an update...");
+						listener.getLogger().println("Output from composer:");
+						listener.getLogger().println("------------------------------");
+						listener.getLogger().println(output.trim());
+						listener.getLogger().println("------------------------------");
+						listener.getLogger().println();
 					}
 				});
 			}
