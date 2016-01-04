@@ -14,9 +14,9 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>hpi</packaging>
 
-	<name>Composer Trigger Plugin</name>
+	<name>ComposerTrigger Plugin</name>
 	<description>Schedules a build when a dependency of a composer project has an update</description>
-	<url>https://wiki.jenkins-ci.org/display/JENKINS/TODO+Plugin</url>
+	<url>https://wiki.jenkins-ci.org/display/JENKINS/ComposerTrigger+Plugin</url>
 	<licenses>
 		<license>
 			<name>MIT License</name>
