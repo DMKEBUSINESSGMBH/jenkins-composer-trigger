@@ -137,7 +137,7 @@ public class ComposerTrigger extends Trigger<BuildableItem> {
 
 		@Override
 		public String getDisplayName() {
-			return "ComposerTrigger";
+			return "mit Composer auf Updates prüfen";
 		}
 	}
 }
