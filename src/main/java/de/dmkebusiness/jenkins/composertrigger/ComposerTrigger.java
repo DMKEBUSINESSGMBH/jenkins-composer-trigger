@@ -52,11 +52,11 @@ public class ComposerTrigger extends Trigger<BuildableItem> {
 	@Override
 	public void run() {
 		Node node = super.job.getLastBuiltOn();
-
 		if (node == null) {
 			LOGGER.info("no previous build found so skip trigger");
 			return;
 		}
+		// validate configuration
 		if (StringUtils.isBlank(this.php)) {
 			LOGGER.warning("php is not defined! skip trigger");
 			return;
@@ -66,17 +66,20 @@ public class ComposerTrigger extends Trigger<BuildableItem> {
 			return;
 		}
 
+		// build path to composer.json
 		StringBuilder workspace = new StringBuilder(super.job.getRootDir().getAbsolutePath());
 		workspace = workspace.append(File.separator).append("workspace");
 		if (StringUtils.isNotBlank(this.composerJson))
 			workspace = workspace.append(File.separator).append(composerJson);
 
 		try {
+			// capture outputstream
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			// run composer
 			node.createLauncher(TaskListener.NULL).launch()
 					.cmds(this.php, this.composerPhar, "update", "--dry-run", "-v", "--no-ansi")
 					.pwd(workspace.toString()).stdout(baos).join();
-
+			//get composer output
 			final String output = baos.toString();
 
 			LOGGER.fine("output from composer.phar: " + output);
@@ -84,6 +87,7 @@ public class ComposerTrigger extends Trigger<BuildableItem> {
 			if (StringUtils.indexOf(output, "Composer could not find a composer.json") >= 0) {
 				LOGGER.warning("composer could not find a composer.json in directory: " + workspace.toString());
 			} else if (StringUtils.indexOf(output, "Nothing to install") < 0) {
+				// schedule build with custom cause
 				job.scheduleBuild(0, new Cause() {
 					@Override
 					public String getShortDescription() {
