@@ -10,5 +10,5 @@ Configuration
 * enter the path to the php-binary
 * enter the path to composer.phar
 
-please make sure that during the build process a `` composer update`` is performed!
+Please make sure that during the build process a `` composer update`` is performed by yourself!
 
