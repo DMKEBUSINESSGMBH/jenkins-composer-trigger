@@ -1,7 +1,7 @@
 ComposerTrigger for Jenkins
 ===========================
 
-The ComposerTrigger schedules a build when a dependency of a composer project has an update
+The ComposerTrigger schedules a build when a dependency in a composer project has an update
 
 Configuration
 -------------
