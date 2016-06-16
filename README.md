@@ -1,8 +1,10 @@
-#ComposerTrigger for Jenkins
+ComposerTrigger for Jenkins
+===========================
 
 The ComposerTrigger schedules a build when a dependency of a composer project has an update
 
-##Configuration
+Configuration
+-------------
 * in the configuration of a job activate ``check for dependency updates with composer``
 * enter a cron-expression to check periodically for updates
 * enter the path to the php-binary
