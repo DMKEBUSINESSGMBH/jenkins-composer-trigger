@@ -9,7 +9,6 @@
 		<version>1.580.1</version>
 		<relativePath />
 	</parent>
-	<groupId>de.dmk-ebusiness.jenkins</groupId>
 	<artifactId>composer-trigger</artifactId>
 	<version>1.0</version>
 	<packaging>hpi</packaging>
@@ -23,16 +22,4 @@
 			<url>http://opensource.org/licenses/MIT</url>
 		</license>
 	</licenses>
-	<repositories>
-		<repository>
-			<id>repo.jenkins-ci.org</id>
-			<url>http://repo.jenkins-ci.org/public/</url>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>repo.jenkins-ci.org</id>
-			<url>http://repo.jenkins-ci.org/public/</url>
-		</pluginRepository>
-	</pluginRepositories>
 </project>
